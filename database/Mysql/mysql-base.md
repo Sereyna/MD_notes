@@ -8,6 +8,7 @@ sql之left join、right join、inner join的区别
 - inner join(等值连接) 只返回两个表中联结字段相等的行
 
 **最左原则**
+
 最左匹配原则就是指在联合索引中，如果你的 SQL 语句中用到了联合索引中的最左边的索引，那么这条 SQL 语句就可以利用这个联合索引去进行匹配。例如某表现有索引(a,b,c)，现在你有如下语句：
 ```sql
 select * from t where a=1 and b=1 and c =1;     #这样可以利用到定义的索引（a,b,c）,用上a,b,c
