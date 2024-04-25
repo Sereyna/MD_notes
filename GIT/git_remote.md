@@ -42,8 +42,17 @@ The key's randomart image is:
 ls -al ~/.ssh # 列出拥有的密钥
 cat ~/.ssh/id_rsa.pub # 将密钥内容显示出来并复制，一定是ssh-rsa开头的
 ```
-将密钥内容复制到GitHub账号中，设置 -> SSH -> new SSH key
+**将密钥内容复制到GitHub账号中**
+设置 -> SSH -> new SSH key
 Title名称随便写，如：Personal laptop
+
+**检查连接是否有效**
+```bash
+~$ ssh -T git@github.com
+
+Hi Sereyna! You've successfully authenticated, but GitHub does not provide shell access.
+```
+这样就算成功
 
 ## 4. 进行远程上传
 **首先GitHub建立同名仓库**
