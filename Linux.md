@@ -1,3 +1,6 @@
+
+目录
+
 # 防火墙
 在Ubuntu中，您可以使用ufw（Uncomplicated Firewall）来管理防火墙。以下是启用和配置基本防火墙的步骤：
 
@@ -29,3 +32,11 @@ sudo ufw disable
 sudo systemctl stop ufw.service
 sudo systemctl disable ufw.service
 ```
+
+# 强制关机引起磁盘只读问题
+强制关机有概率会让挂载的磁盘变成只读文件系统
+
+**修复步骤如下**
+1. 打开ubuntu中自带的“磁盘”程序（你可通过搜索程序“磁盘”来找到，也可通过菜单栏找到，还可以终端运行：`gnome-disks`）
+2. 找到并单击选中想要修复的磁盘，然后点击左下方齿轮状的按钮，并单击运行`check filesystem`和`Repair filesystem`命令（一般只需要`Repair filesystem`命令）
+3. 出现提示单击“确定”继续，完成修复。

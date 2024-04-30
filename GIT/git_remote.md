@@ -3,6 +3,8 @@
 ## 1. 本地建立一个仓库，并进行初始化到commit操作，详细步骤见git_basic.md
 
 ## 2. 本地NEW一个SSH密钥
+如果`~/.ssh/`中已有历史生成过的密钥（以前根据以下步骤添加的），直接跳过生成密钥，将其添加到GitHub密钥管理即可。
+
 **设置Git的username和email（未尝试过）**
 ```shell
 git config --global user.name "Sereyna"
