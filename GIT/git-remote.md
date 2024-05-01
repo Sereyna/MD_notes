@@ -1,8 +1,9 @@
 # Git远程仓库管理
 ---
-## 1. 本地建立一个仓库，并进行初始化到commit操作，详细步骤见git_basic.md
+## 1. 将本地仓库push到远程
+### 1.1 本地建立一个仓库，并进行初始化到commit操作，详细步骤见git_basic.md
 
-## 2. 本地NEW一个SSH密钥
+### 1.2 本地NEW一个SSH密钥
 如果`~/.ssh/`中已有历史生成过的密钥（以前根据以下步骤添加的），直接跳过生成密钥，将其添加到GitHub密钥管理即可。
 
 **设置Git的username和email（未尝试过）**
@@ -39,7 +40,7 @@ The key's randomart image is:
 密钥会默认保存在`~/.ssh/`中
 
 
-## 3. 将SSH密钥添加到GitHub密钥管理中
+### 1.3 将SSH密钥添加到GitHub密钥管理中
 ```shell
 ls -al ~/.ssh # 列出拥有的密钥
 cat ~/.ssh/id_rsa.pub # 将密钥内容显示出来并复制，一定是ssh-rsa开头的
@@ -56,7 +57,7 @@ Hi Sereyna! You've successfully authenticated, but GitHub does not provide shell
 ```
 这样就算成功
 
-## 4. 进行远程上传
+### 1.4 进行远程上传
 **首先GitHub建立同名仓库**
 *注意：远程仓库要新建同名仓库！！如果不小心建了不同名的，删除步骤如下*
 1. 在==仓库页面==(不是个人信息页面)上方第二行一横排按钮最后一个，点击 "Settings"（设置）按钮。
@@ -81,7 +82,7 @@ sereyna@sereyna-ThinkPad-S5:~/PycharmProjects/LearnPYSpider$ git remote -v
 origin	git@github.com:Sereyna/LearnPYSpider.git (fetch)
 origin	git@github.com:Sereyna/LearnPYSpider.git (push)
 ```
-## 错误解决
+### 错误解决
 **在git pull、git push等无法连接远程库**
 ```bash
 ~$ git push -u origin main
@@ -94,6 +95,33 @@ and the repository exists.
 ```
 但是未指明是`Connection`具体被什么IP和端口关闭的，可初步排除是防火墙拦截，就检查一下`~/.ssh/config`文件，将里面的东西全部注释掉就行。
 
+## 2. 克隆（clone）远程 Git 仓库到本地
+拷贝格式
+```bash
+git clone [url]
+```
+URL使用http或者ssh皆可
+```bash
+$ git clone git@github.com:Sereyna/MD_notes.git
+
+Cloning into 'MD_notes'...
+remote: Enumerating objects: 80, done.
+remote: Counting objects: 100% (80/80), done.
+remote: Compressing objects: 100% (58/58), done.
+remote: Total 80 (delta 14), reused 75 (delta 9), pack-reused 0
+Receiving objects: 100% (80/80), 268.46 KiB | 95.00 KiB/s, done.
+Resolving deltas: 100% (14/14), done.
+```
+
+### 也可以clone本地仓库到本地
+
+```bash
+cd /path/to/your/repo       # 切换到你的Git仓库目录
+git clone --bare my_repo my_repo.git  # 创建裸副本
+mv my_repo.git /new/path/       # 移动裸副本文件夹
+cd /path/to/your/newrepo #切换到你新的Git仓库目录
+git clone my_repo.git       # 从裸副本恢复出完整的仓库
+```
 ---
 **【引用】**
 Git教程 

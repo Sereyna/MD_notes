@@ -1,7 +1,8 @@
 
 目录
-
-# 防火墙
+# Linux大全
+---
+## 防火墙
 在Ubuntu中，您可以使用ufw（Uncomplicated Firewall）来管理防火墙。以下是启用和配置基本防火墙的步骤：
 
 首先，确保ufw已经安装。如果没有安装，可以使用以下命令安装：
@@ -33,7 +34,7 @@ sudo systemctl stop ufw.service
 sudo systemctl disable ufw.service
 ```
 
-# 强制关机引起磁盘只读问题
+## 强制关机引起磁盘只读问题
 强制关机有概率会让挂载的磁盘变成只读文件系统
 
 **修复步骤如下**
