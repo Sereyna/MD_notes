@@ -40,3 +40,7 @@
 
 ## 1. 爬虫（Spider）
 1. 爬虫基础（sp-basic.md）
+2. 反爬（sp-anti-spider.md）
+3. js逆向（sp-js.md）
+
+
