@@ -5,7 +5,7 @@
 
 InnoDB是新表的默认存储引擎。在实践中，高级 InnoDB性能特性意味着 InnoDB表通常优于简单MyISAM表，尤其是对于繁忙的数据库。
 ## 1 innoDB架构
-![innoDB-architecture](img/innodb-architecture.png "innoDB-architecture")
+![innoDB-architecture](../img/innodb-architecture.png "innoDB-architecture")
 
 **_缓冲池（Buffer pool）_**
 

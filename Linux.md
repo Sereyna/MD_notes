@@ -41,3 +41,9 @@ sudo systemctl disable ufw.service
 1. 打开ubuntu中自带的“磁盘”程序（你可通过搜索程序“磁盘”来找到，也可通过菜单栏找到，还可以终端运行：`gnome-disks`）
 2. 找到并单击选中想要修复的磁盘，然后点击左下方齿轮状的按钮，并单击运行`check filesystem`和`Repair filesystem`命令（一般只需要`Repair filesystem`命令）
 3. 出现提示单击“确定”继续，完成修复。
+
+## 屏幕截图
+![ubuntu屏幕截图默认快捷键](IMG/Screenshot.png "ubuntu屏幕截图默认快捷键")
+
+主要用`Shift+PrtSc`进行屏幕部分截图
+

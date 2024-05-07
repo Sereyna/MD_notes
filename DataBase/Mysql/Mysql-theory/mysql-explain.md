@@ -10,7 +10,7 @@
 简单来说，就是SQL在数据库中执行时的表现情况，通常用于SQL性能分析、优化等场景。
 
 ## MySQL查询过程
-![mysql-查询过程](img/mysql-查询过程.webp "mysql-查询过程")
+![mysql-查询过程](../img/mysql-查询过程.webp "mysql-查询过程")
 
 MySQL查询过程如下：
 
@@ -29,7 +29,7 @@ MySQL会解析查询，并创建内部数据结构（解析树），并对其进
 
 用户可通过关键字提示（hint）优化器，从而影响优化器的决策过程。也可以通过通过优化器解释（explain）优化过程的各个因素，使用户知道数据库是如何进行优化决策的，并提供一个参考基准，便于用户重构查询和数据库表的schema、修改数据库配置等，使查询尽可能高效。
 
-![mysql-explain](img/mysql-explain.webp "mysql-explain")
+![mysql-explain](../img/mysql-explain.webp "mysql-explain")
 
 这个执行计划给出的信息是，该查询通过一个简单的给定范围的扫描，共扫描55183行，使用index condition条件在dt_user表中筛选出，扫描过程中使用PRIMARY和idx_city_name索引。
 
