@@ -47,7 +47,7 @@ Python的解释器有cpython（GIL就是它的产物）、jython、pypy
 不建议更换，因为有大量的库依赖cpython，而GIL虽然有局限性，但仍保证了程序安全：
 1. GIL会保证字节码的安全
 
-## 5.线程同步（Lock）
+## 5. 线程同步（Lock）
 代码演示
 ```python
 from threading import Lock
@@ -82,3 +82,8 @@ if __name__ == "__main__":
     print(total)
     # 如果不用锁的话，根据GIL的时间片概念，每次运行的结果都会不一样
 ```
+
+## 6. 线程间通信
+线程间通信的两种办法：
+1. 最基本：可运用全局变量，比如数组，一边append，一边pop
+2. 消息队列Queue

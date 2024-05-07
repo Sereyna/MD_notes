@@ -47,3 +47,44 @@ sudo systemctl disable ufw.service
 
 主要用`Shift+PrtSc`进行屏幕部分截图
 
+## 关于JetBrains系列软件同时打开多个卡电脑的问题
+**尝试修改bin/JetBrains64.vmoption**
+```bash
+-Xms:256M  # 赋予软件的初始内存
+-Xmx:2024M  # 赋予软件的最大内存，最大为2048M，把这个改成最大
+```
+
+**尝试将软件缓存转移至硬盘**
+
+打开bin/idea.properties，将下面四行设置添加进去：
+以pycharm为例
+```bash
+# Use ${idea.home.path} macro to specify location relative to IDE installation home.
+# Use ${xxx} where xxx is any Java property (including defined in previous lines of this file) to refer to its value.
+# Note for Windows users: please make sure you're using forward slashes: C:/dir1/dir2.
+
+#---------------------------------------------------------------------
+# Uncomment this option if you want to customize a path to the settings directory.
+#---------------------------------------------------------------------
+# idea.config.path=${user.home}/.DataGrip/config
+idea.config.path=/media/Code/JetBrains_cache/pycharm_cache/config
+
+#---------------------------------------------------------------------
+# Uncomment this option if you want to customize a path to the caches directory.
+#---------------------------------------------------------------------
+# idea.system.path=${user.home}/.DataGrip/system
+idea.system.path=/media/Code/JetBrains_cache/pycharm_cache/system
+
+#---------------------------------------------------------------------
+# Uncomment this option if you want to customize a path to the user-installed plugins directory.
+#---------------------------------------------------------------------
+# idea.plugins.path=${idea.config.path}/plugins
+idea.plugins.path=/media/Code/JetBrains_cache/pycharm_cache/plugins
+
+#---------------------------------------------------------------------
+# Uncomment this option if you want to customize a path to the logs directory.
+#---------------------------------------------------------------------
+# idea.log.path=${idea.system.path}/log
+idea.log.path=/media/Code/JetBrains_cache/pycharm_cache/log
+```
+备注：有可能会引发激活问题，再次复制一下激活码就行
