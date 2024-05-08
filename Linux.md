@@ -47,6 +47,57 @@ sudo systemctl disable ufw.service
 
 主要用`Shift+PrtSc`进行屏幕部分截图
 
+## 修改ubuntu源镜像
+以增加系统更新的速度
+
+在`/etc/apt/sources.list`中注释掉原有的源，添加新的源镜像地址。例如，使用阿里云的镜像站点：
+```bash
+deb http://mirrors.aliyun.com/ubuntu/ jammy main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ jammy main restricted universe multiverse
+ 
+deb http://mirrors.aliyun.com/ubuntu/ jammy-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ jammy-updates main restricted universe multiverse
+ 
+deb http://mirrors.aliyun.com/ubuntu/ jammy-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ jammy-backports main restricted universe multiverse
+ 
+deb http://mirrors.aliyun.com/ubuntu/ jammy-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ jammy-security main restricted universe multiverse
+```
+其中`jammy`是Ubuntu22.04的版本号，可根据需要替换
+
+**更新软件源：**
+```bash
+sudo apt-get update
+```
+这一步如果报错，根据错误提示，报错原因是缺少公钥`E88979FB9B30ACF2`，公钥在错误提示里
+```bash
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: http://dl.google.com/linux/chrome/deb stable InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY E88979FB9B30ACF2
+W: Failed to fetch http://dl.google.com/linux/chrome/deb/dists/stable/InRelease  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY E88979FB9B30ACF2
+W: Some index files failed to download. They have been ignored, or old ones used instead.
+```
+
+添加公钥
+```bash
+$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E88979FB9B30ACF2
+
+Executing: /tmp/apt-key-gpghome.VggvMw29Et/gpg.1.sh --keyserver keyserver.ubuntu.com --recv-keys E88979FB9B30ACF2
+gpg: key 7721F63BD38B4796: 2 duplicate signatures removed
+gpg: key 7721F63BD38B4796: "Google Inc. (Linux Packages Signing Authority) <linux-packages-keymaster@google.com>" 3 new signatures
+gpg: key 7721F63BD38B4796: "Google Inc. (Linux Packages Signing Authority) <linux-packages-keymaster@google.com>" 2 new subkeys
+gpg: Total number processed: 1
+gpg:            new subkeys: 2
+gpg:         new signatures: 3
+
+# 这个输出表示已经成功从keyserver.ubuntu.com服务器上获取了公钥
+# 现在再尝试运行sudo apt-get update应该就可以成功索引了
+```
+
+**升级已安装的包：**
+```bash
+sudo apt-get -y upgrade
+```
+
 ## 关于JetBrains系列软件同时打开多个卡电脑的问题
 **尝试修改bin/JetBrains64.vmoption**
 ```bash
