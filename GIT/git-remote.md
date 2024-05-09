@@ -113,6 +113,10 @@ Receiving objects: 100% (80/80), 268.46 KiB | 95.00 KiB/s, done.
 Resolving deltas: 100% (14/14), done.
 ```
 
+```
+git config --global --add safe.directory /media/Code/Program/MD_notes
+```
+
 ### 也可以clone本地仓库到本地
 
 ```bash

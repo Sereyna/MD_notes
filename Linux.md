@@ -1,7 +1,13 @@
 
 目录
 # Linux大全
----
+
+## 1. 常用命令
+### 1.1 dpkg安装
+```bash
+sudo dpkg -i 安装包.deb
+```
+
 ## 防火墙
 在Ubuntu中，您可以使用ufw（Uncomplicated Firewall）来管理防火墙。以下是启用和配置基本防火墙的步骤：
 
