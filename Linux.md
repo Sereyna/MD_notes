@@ -7,6 +7,40 @@
 ```bash
 sudo dpkg -i 安装包.deb
 ```
+### 1.2 屏幕截图
+
+ubuntu24.04
+主要用`PrtSc`进行屏幕部分截图
+
+
+## 2. 磁盘问题
+### 2.1 强制关机引起磁盘只读问题
+强制关机有概率会让挂载的磁盘变成只读文件系统
+
+**修复步骤如下**
+1. 打开ubuntu中自带的“磁盘”程序（你可通过搜索程序“磁盘”来找到，也可通过菜单栏找到，还可以终端运行：`gnome-disks`）
+2. 找到并单击选中想要修复的磁盘，然后点击左下方齿轮状的按钮，并单击运行`check filesystem`和`Repair filesystem`命令（一般只需要`Repair filesystem`命令）
+3. 出现提示单击“确定”继续，完成修复。
+
+### 2.2 解决wrong fs type, bad option, bad superblock on /dev/sda1问题
+挂载磁盘出现以下错误：
+![磁盘错误](IMG/cipan.png "磁盘错误")
+
+**解决办法**
+
+出现这种问题应该先尝试从日志入手，输入：
+```bash
+sudo dmesg | tail
+```
+![磁盘](IMG/cipan2.png "磁盘错误")
+
+搜索发现这是因为 `/dev/sdb4` 这个volume被标记为`dirty`，并且`ntfs3`在没有`force`这个flag设置的情况下不会挂载。
+
+这种情况可以通过`ntfsfix`命令去修复，查看`man ntfsfix`可以看到有一个-d参数，可以清除这个dirty的标记。
+```bash
+sudo ntfsfix -d /dev/sdb4
+```
+提示成功（如上图），重新挂载就没有出现这个问题了。
 
 ## 防火墙
 在Ubuntu中，您可以使用ufw（Uncomplicated Firewall）来管理防火墙。以下是启用和配置基本防火墙的步骤：
@@ -40,18 +74,6 @@ sudo systemctl stop ufw.service
 sudo systemctl disable ufw.service
 ```
 
-## 强制关机引起磁盘只读问题
-强制关机有概率会让挂载的磁盘变成只读文件系统
-
-**修复步骤如下**
-1. 打开ubuntu中自带的“磁盘”程序（你可通过搜索程序“磁盘”来找到，也可通过菜单栏找到，还可以终端运行：`gnome-disks`）
-2. 找到并单击选中想要修复的磁盘，然后点击左下方齿轮状的按钮，并单击运行`check filesystem`和`Repair filesystem`命令（一般只需要`Repair filesystem`命令）
-3. 出现提示单击“确定”继续，完成修复。
-
-## 屏幕截图
-![ubuntu屏幕截图默认快捷键](IMG/Screenshot.png "ubuntu屏幕截图默认快捷键")
-
-主要用`Shift+PrtSc`进行屏幕部分截图
 
 ## 修改ubuntu源镜像
 以增加系统更新的速度
@@ -105,6 +127,7 @@ sudo apt-get -y upgrade
 ```
 
 ## 关于JetBrains系列软件同时打开多个卡电脑的问题
+==慎用！！可能会出现麻烦==
 **尝试修改bin/JetBrains64.vmoption**
 ```bash
 -Xms:256M  # 赋予软件的初始内存
@@ -145,3 +168,11 @@ idea.plugins.path=/media/Code/JetBrains_cache/pycharm_cache/plugins
 idea.log.path=/media/Code/JetBrains_cache/pycharm_cache/log
 ```
 备注：有可能会引发激活问题，再次复制一下激活码就行
+
+
+
+## Chrome不能安装crx文件的问题
+在命令行里输入
+```bash
+~$ /opt/google/chrome/google-chrome --enable-easy-off-store-extension-install
+```
