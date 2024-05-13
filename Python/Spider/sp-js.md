@@ -10,7 +10,6 @@ pip install PyExecJS
 安装成功后，最好重启下cmd终端和pycharm
 
 **安装node.js**
-==需要安装node.js吗？存个疑问==
 
 安装node.js是为了让程序有一个比较良好的JS运行引擎
 进入官网：https://nodejs.org/en/
