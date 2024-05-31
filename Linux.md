@@ -7,6 +7,42 @@
 ```bash
 sudo dpkg -i 安装包.deb
 ```
+**缺少依赖**
+
+如果安装过程中缺少依赖，且下载源无法定位依赖，例如：
+```bash
+$ sudo apt-get install libgconf-2-4
+
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+E: Unable to locate package libgconf-2-4
+```
+
+可以下载libgconf-2-4安装包，地址为：http://archive.ubuntu.com/ubuntu/pool/universe/g/gconf/libgconf-2-4_3.2.6-8ubuntu1_amd64.deb
+```bash
+sudo dpkg -i libgconf-2-4_3.2.6-8ubuntu1_amd64.deb
+```
+
+如果报错，未安装软件包 gconf2-common，下载gconf2-common安装包，地址为：http://archive.ubuntu.com/ubuntu/pool/universe/g/gconf/gconf2-common_3.2.6-8ubuntu1_all.deb
+```bash
+sudo dpkg -i gconf2-common_3.2.6-8ubuntu1_all.deb
+```
+
+==安装包查询地址==
+https://pkgs.org/download/libgconf-2-4 
+
+**卸载安装包**
+首先，你需要找出由特定包依赖或依赖的所有包。你可以使用`apt-cache`命令来查找这些信息。例如，如果你想要卸载包`package`，你可以运行以下命令：
+```bash
+apt-cache rdepends package
+```
+
+要删除包及其依赖，你可以使用`apt-get`命令。你需要添加`--auto-remove`和`--purge`选项以确保移除依赖和数据文件。
+```bash
+sudo apt-get remove --purge package --auto-remove
+```
+
 ### 1.2 屏幕截图
 
 ubuntu24.04
@@ -125,51 +161,6 @@ gpg:         new signatures: 3
 ```bash
 sudo apt-get -y upgrade
 ```
-
-## 关于JetBrains系列软件同时打开多个卡电脑的问题
-==慎用！！可能会出现麻烦==
-**尝试修改bin/JetBrains64.vmoption**
-```bash
--Xms:256M  # 赋予软件的初始内存
--Xmx:2024M  # 赋予软件的最大内存，最大为2048M，把这个改成最大
-```
-
-**尝试将软件缓存转移至硬盘**
-
-打开bin/idea.properties，将下面四行设置添加进去：
-以pycharm为例
-```bash
-# Use ${idea.home.path} macro to specify location relative to IDE installation home.
-# Use ${xxx} where xxx is any Java property (including defined in previous lines of this file) to refer to its value.
-# Note for Windows users: please make sure you're using forward slashes: C:/dir1/dir2.
-
-#---------------------------------------------------------------------
-# Uncomment this option if you want to customize a path to the settings directory.
-#---------------------------------------------------------------------
-# idea.config.path=${user.home}/.DataGrip/config
-idea.config.path=/media/Code/JetBrains_cache/pycharm_cache/config
-
-#---------------------------------------------------------------------
-# Uncomment this option if you want to customize a path to the caches directory.
-#---------------------------------------------------------------------
-# idea.system.path=${user.home}/.DataGrip/system
-idea.system.path=/media/Code/JetBrains_cache/pycharm_cache/system
-
-#---------------------------------------------------------------------
-# Uncomment this option if you want to customize a path to the user-installed plugins directory.
-#---------------------------------------------------------------------
-# idea.plugins.path=${idea.config.path}/plugins
-idea.plugins.path=/media/Code/JetBrains_cache/pycharm_cache/plugins
-
-#---------------------------------------------------------------------
-# Uncomment this option if you want to customize a path to the logs directory.
-#---------------------------------------------------------------------
-# idea.log.path=${idea.system.path}/log
-idea.log.path=/media/Code/JetBrains_cache/pycharm_cache/log
-```
-备注：有可能会引发激活问题，再次复制一下激活码就行
-
-
 
 ## Chrome不能安装crx文件的问题
 在命令行里输入
