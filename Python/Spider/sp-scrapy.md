@@ -11,6 +11,9 @@
 6. 调度器——`Schedule`调度所有`Requests`请求，对程序员黑盒
 6. 下载器——`Downloader`下载`url`，返回一个`Responses`，对程序员黑盒
 
+Scrapy基于`twisted`实现，性能是最大优势
+Scrapy内置CSS和Xpath Selector非常方便，beautifulsoup慢
+
 ## 1. 快速上手
 制作 Scrapy 爬虫 一共需要4步:
 1. 新建项目 (scrapy startproject xxx)：新建一个新的爬虫项目

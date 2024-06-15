@@ -1,7 +1,12 @@
 # 爬虫前端处理（主要是JS逆向）
 ---
-## 1. PyExecJS（在Python中直接运行js代码模块）
-### 1.1 环境安装
+## 1. 前端基础
+**网页种类**
+1. 静态网页
+2. 动态网页
+3. webservice（restapi）
+## 2. PyExecJS（在Python中直接运行js代码模块）
+### 2.1 环境安装
 **安装PyExecJS**
 
 ```shell
