@@ -33,7 +33,9 @@ sudo dpkg -i gconf2-common_3.2.6-8ubuntu1_all.deb
 https://pkgs.org/download/libgconf-2-4 
 
 **卸载安装包**
-首先，你需要找出由特定包依赖或依赖的所有包。你可以使用`apt-cache`命令来查找这些信息。例如，如果你想要卸载包`package`，你可以运行以下命令：
+使用`dpkg -l`列出安装列表以找出安装包名。
+
+其次，你需要找出由特定包依赖或依赖的所有包。你可以使用`apt-cache`命令来查找这些信息。例如，如果你想要卸载包`package`，你可以运行以下命令：
 ```bash
 apt-cache rdepends package
 ```
@@ -112,7 +114,10 @@ sudo systemctl disable ufw.service
 
 
 ## 修改ubuntu源镜像
-以增加系统更新的速度
+
+`ubuntu 24.04LTS`软件源路径改为`/etc/apt/sources.list.d/ubuntu.sources`
+如果直接从清华镜像源下载`ubuntu 24.04LTS`，软件源默认就是清华源
+
 
 在`/etc/apt/sources.list`中注释掉原有的源，添加新的源镜像地址。例如，使用阿里云的镜像站点：
 ```bash
