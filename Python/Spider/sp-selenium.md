@@ -8,8 +8,16 @@ selenium是一个工具集，有了这个工具集，就可以顺利开展自动
 
 !["selenium"](../py-img/selenium.png "selenium")
 
+**直接安装**
+```py
+pip install selenium
+```
+
+
 
 ## 1. driver下载
+**原始方法**
+
 chrome：https://googlechromelabs.github.io/chrome-for-testing/#stable
 
 下载的driver一定要对应chrome版本
@@ -20,6 +28,24 @@ from selenium import webdriver
 
 browser = webdriver.Chrome('/home/sereyna/Environment/chromedriver-linux64/chromedriver')
 ```
+
+### 1.1 undetected-chromedriver
+因为selenium控制浏览器会被一些网站识别出来，所以还要下载`undetected-chromedriver`，其为开源项目
+```py
+pip install undetected-chromedriver
+```
+==缺点：非常慢，谷歌网被墙，如果要用的话需要多尝试几次==
+
+**使用说明**
+可参考官方文档
+
+```py
+import undetected_chromedriver as uc
+driver = uc.Chrome(headless=True,use_subprocess=False)
+driver.get('https://nowsecure.nl')
+driver.save_screenshot('nowsecure.png')
+```
+
 
 ## 2. 具体使用
 需要优化的两个问题：
@@ -35,3 +61,7 @@ browser = webdriver.Chrome('/home/sereyna/Environment/chromedriver-linux64/chrom
 ```py
 browser.switch_to.frame(browser.find_element_by_tag_name("iframe"))
 ```
+
+---
+# 【引用】
+- undetected-chromedriver文档 https://github.com/ultrafunkamsterdam/undetected-chromedriver
