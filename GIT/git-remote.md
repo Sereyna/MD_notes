@@ -58,7 +58,7 @@ Hi Sereyna! You've successfully authenticated, but GitHub does not provide shell
 这样就算成功
 
 ### 1.4 进行远程上传
-**首先GitHub建立同名仓库**
+**首先GitHub建立同名仓库**（Gitee同理）
 *注意：远程仓库要新建同名仓库！！如果不小心建了不同名的，删除步骤如下*
 1. 在==仓库页面==(不是个人信息页面)上方第二行一横排按钮最后一个，点击 "Settings"（设置）按钮。
 2. 在==仓库设置页面==中，向下滚动，直到找到 "Danger Zone"（危险区域）部分。
@@ -82,6 +82,21 @@ sereyna@sereyna-ThinkPad-S5:~/PycharmProjects/LearnPYSpider$ git remote -v
 origin	git@github.com:Sereyna/LearnPYSpider.git (fetch)
 origin	git@github.com:Sereyna/LearnPYSpider.git (push)
 ```
+
+**Gitee**
+
+Git 全局设置:
+```bash
+git config --global user.name "红泥"
+git config --global user.email "asuradasugo@163.com"
+```
+远程上传：
+```bash
+git commit -m "first commit"
+git remote add origin https://gitee.com/red-mud-cqq/cnblogs-scrapy.git
+git push -u origin "master"
+```
+
 ### 错误解决
 **在git pull、git push等无法连接远程库**
 ```bash

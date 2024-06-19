@@ -34,7 +34,7 @@ browser = webdriver.Chrome('/home/sereyna/Environment/chromedriver-linux64/chrom
 ```py
 pip install undetected-chromedriver
 ```
-==缺点：非常慢，谷歌网被墙，如果要用的话需要多尝试几次==
+==缺点：非常慢，谷歌被墙，如果要用的话需要多尝试几次==
 
 **使用说明**
 可参考官方文档
@@ -48,6 +48,9 @@ driver.save_screenshot('nowsecure.png')
 
 
 ## 2. 具体使用
+
+**无界面启动Selenium**
+
 需要优化的两个问题：
 1. 无界面启动Selenium
 2. 不加载图片，只需要图片URL即可
