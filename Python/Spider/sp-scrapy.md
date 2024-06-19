@@ -71,6 +71,12 @@ scrapy crawl csdn
 ```
 该命令将会执行目录`scrapy_test/spiders`下的爬虫`csdn`
 
+### 2.3 调试
+进入虚拟环境后
+```bash
+scrapy shell https://www.example.com
+```
+
 
 ## 3. 高并发特性
 底层基于`twisted`（异步IO框架）实现
